@@ -1,10 +1,15 @@
 from fastapi import FastAPI
-from app.database.connection import engine, Base
-from app.models.products import Product
-from app.routers import product_router
+from app.routers.product_router import router
 
-Base.metadata.create_all(bind=engine)
+app = FastAPI(
+    title="Restaurante API",
+    description="API de restaurante com FastAPI e MongoDB",
+    version="1.0.0"
+)
 
-app = FastAPI(title="Restaurant API")
+app.include_router(router)
 
-app.include_router(product_router.router)   
+
+@app.get("/")
+def root():
+    return {"message": "Restaurante API rodando"}

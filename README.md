@@ -1,222 +1,179 @@
-# 🍔 Restaurant API + Data & AI Ready
+# 🍽️ Restaurante API
 
-API RESTful para gerenciamento de produtos de restaurante, desenvolvida com **FastAPI**, **SQLAlchemy** e **SQLite**, preparada para evolução para **Data Analytics e Inteligência Artificial**.
+API de restaurante desenvolvida com **FastAPI + MongoDB**, com arquitetura organizada para cadastro e listagem de produtos.
 
----
-
-## 🚀 Visão Geral
-
-Este projeto demonstra a construção de uma API backend moderna, com foco em:
-
-- CRUD completo de produtos
-- Persistência em banco relacional
-- Arquitetura modular
-- Integração futura com pipelines de dados e IA
-- Boas práticas de versionamento com Git
+Projeto focado em **Backend Python**, **APIs REST** e **integração com banco NoSQL**, ideal para portfólio de vaga **Desenvolvedor Python Júnior**.
 
 ---
 
-## 🧠 Arquitetura
-
-Cliente (Swagger / Frontend)  
-↓  
-FastAPI  
-↓  
-SQLAlchemy (ORM)  
-↓  
-SQLite  
-↓  
-(Evolução → PostgreSQL / Data Pipeline / ML)
-
----
-
-## 🛠 Tecnologias
+# 🚀 Tecnologias
 
 - Python
 - FastAPI
-- SQLAlchemy
-- SQLite
+- MongoDB
+- PyMongo
 - Uvicorn
-- Docker
-- Git / GitHub
-
-Em evolução:
-
-- PostgreSQL
-- Docker Compose
-- Machine Learning
-- APIs de recomendação
+- Pydantic
+- Docker (opcional)
 
 ---
 
-## 📂 Estrutura do Projeto
+# 📁 Estrutura do Projeto
 
+```
 app/
 ├── database/
-│ └── connection.py
+│   └── connection.py
 ├── models/
-│ └── products.py
+│   └── product_model.py
 ├── routers/
-│ └── product_router.py
+│   └── product_router.py
 ├── schemas/
-│ └── product_schema.py
+│   └── product_schema.py
 └── main.py
+```
+
+Arquitetura baseada em:
+
+- Router layer
+- Schema validation
+- Model layer
+- Database connection
+- Clean architecture
 
 ---
 
-## ⚙️ Funcionalidades
+# ⚙️ Instalação
 
-✔ Criar produto  
-✔ Listar produtos  
-✔ Atualizar produto  
-✔ Deletar produto
+Clone o projeto
 
----
+```
+git clone https://github.com/seu-repo/restaurante-api.git
+cd RestauranteApi
+```
 
-## 🔗 Endpoints
+Criar ambiente virtual
 
-### GET /produtos
+Windows
 
-Lista todos os produtos cadastrados.
-
-Exemplo de resposta:
-
-[
-{
-"id": 1,
-"nome": "Burger XR",
-"preco": 29.9
-}
-]
-
----
-
-### POST /produtos
-
-Cria um novo produto.
-
-Body:
-
-{
-"nome": "Burger XR",
-"preco": 29.9
-}
-
-Resposta:
-
-{
-"id": 1,
-"nome": "Burger XR",
-"preco": 29.9
-}
-
----
-
-### PUT /produtos/{id}
-
-Atualiza um produto existente.
-
-Body:
-
-{
-"nome": "Burger XR Duplo",
-"preco": 34.9
-}
-
----
-
-### DELETE /produtos/{id}
-
-Remove um produto.
-
-Resposta:
-
-{
-"mensagem": "Produto removido com sucesso"
-}
-
----
-
-## ▶️ Como executar localmente
-
-1. Clone o projeto
-
-git clone git@github.com:andreorganizacional/restaurant-api.git  
-cd restaurant-api
-
-2. Ambiente virtual
-
-python -m venv venv  
+```
+python -m venv venv
 venv\Scripts\activate
+```
 
-3. Instalar dependências
+Instalar dependências
 
-pip install -r requirements.txt
+```
+pip install fastapi uvicorn pymongo python-dotenv
+```
 
-4. Rodar API
+---
 
+# 🗄️ Rodar MongoDB
+
+Usando Docker:
+
+```
+docker run -d -p 27017:27017 --name mongodb mongo
+```
+
+Ou MongoDB local:
+
+```
+mongodb://localhost:27017
+```
+
+---
+
+# ▶️ Executar API
+
+```
 uvicorn app.main:app --reload
+```
 
-5. Acessar Swagger
+---
 
+# 📌 Acessar API
+
+Swagger UI:
+
+```
 http://127.0.0.1:8000/docs
+```
+
+ReDoc:
+
+```
+http://127.0.0.1:8000/redoc
+```
 
 ---
 
-## 🐳 Docker
+# 📦 Endpoints
 
-Build:
+## Criar produto
 
-docker build -t restaurant-api .
+POST /products/
 
-Run:
+Body:
 
-docker run -d -p 8000:8000 --name restaurant-api-container restaurant-api
-
----
-
-## ☁️ Deploy
-
-https://SEU-LINK.onrender.com/docs
-
----
-
-## 📸 Preview
-
-![Swagger](docs/swagger.png)
+```
+{
+  "name": "Pizza Calabresa",
+  "price": 39.9,
+  "description": "Pizza grande"
+}
+```
 
 ---
 
-## 🔄 Workflow Git
+## Listar produtos
 
-- main
-- develop
-- feature/database
+GET /products/
 
----
+Resposta:
 
-## 🧪 Roadmap
-
-- [ ] PostgreSQL
-- [ ] Docker Compose
-- [ ] Pipeline de dados
-- [ ] Machine Learning
-- [ ] API de recomendação
-
----
-
-## 👤 Autor
-
-Carlos André Távora Soares
+```
+[
+  {
+    "id": "6615f0b8a8c123456789abcd",
+    "name": "Pizza Calabresa",
+    "price": 39.9,
+    "description": "Pizza grande"
+  }
+]
+```
 
 ---
 
-## 💡 Sobre
+# 🧠 Conceitos aplicados
 
-Projeto voltado para:
+- FastAPI REST API
+- MongoDB integration
+- CRUD backend
+- Router architecture
+- Pydantic validation
+- Clean code
+- Backend structure profissional
+- API documentation automática
+- NoSQL database
 
-- Backend Python
-- Dados
-- Inteligência Artificial
+---
 
-Foco em vagas **Júnior**
+# 🎯 Objetivo do Projeto
+
+Projeto criado para portfólio de:
+
+- Desenvolvedor Python Júnior
+- Backend Developer
+- AI / Data Backend
+- FastAPI Developer
+- MongoDB API Developer
+
+---
+
+# 👨‍💻 Autor
+
+Carlos André Tavora Soares
+
+Backend Developer | Python | FastAPI | AI | Computer Vision | MongoDB
